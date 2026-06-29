@@ -9,7 +9,7 @@ public class fibonacci {
     //     int fibn = fnm1 + fnm2;
     //     return fibn;
     // }
-//TC : O(n^2) -> very slow
+//TC : O(2^n) -> very slow
 
     public static int fibFast(int n) {
     if(n <= 1) return n;

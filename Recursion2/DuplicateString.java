@@ -6,7 +6,7 @@ public class DuplicateString {
         }
 
         char currChar = str.charAt(idx);
-        if(map[currChar - 'a'] == true){
+         if(map[currChar - 'a'] == true){
             //duplicate
             removeDuplicates(str, idx+1, newStr, map);
         }
