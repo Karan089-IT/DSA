@@ -12,10 +12,10 @@ public class MergeSort {
            return; 
         }
 
-        int mid = si + (ei - si)/2;
-        mergeSort(arr, si, mid);  // left part
-        mergeSort(arr, mid+1, ei); //right part
-        merge(arr, si, mid , ei);
+        int mid = si + (ei - si)/2; 
+        mergeSort(arr, si, mid);  // left part 
+        mergeSort(arr, mid+1, ei); //right part 
+        merge(arr, si, mid , ei); 
     }
 
     public static void merge(int arr[], int si, int mid, int ei){
@@ -36,7 +36,7 @@ public class MergeSort {
         }
 
         // left part for rest element
-        while (i <= mid) {
+        while (i <= mid) { 
             temp[k++] = arr[i++];            
         }
 
