@@ -1,5 +1,6 @@
 public class constructors {
     public static void main(String[] args) {
+        //ClassName objectName = new ClassName();
         Student s1 = new Student();
         Student s2 = new Student("Karan" );
         Student s3 = new Student(123);
