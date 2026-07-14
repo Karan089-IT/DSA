@@ -1,47 +1,42 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class PairSum {
-    // public static boolean pairSum1(ArrayList<Integer> list, int target){
+public class PairSum2 {
 
-    //     for(int i=0; i<list.size(); i++){
-    //         for(int j=i+1; j<list.size(); j++){
-    //             if(list.get(i) + list.get(j) == target){
-    //                 System.out.println("Pair Found: "+list.get(i)+","+list.get(j));
-    //                 return true;
-    //             }
-    //         }
-    //     }
-    //     return false;
-    // }
+//in a Sorted & Roaed ArrayList(By Two pointer) - O(n)
+    public static boolean pairSum2(ArrayList<Integer> list, int target){
+        int bp = -1;
+        int n = list.size();
+        for(int i=0; i<list.size(); i++){
+            if(list.get(i) > list.get(i+1)){
+                bp = i;
+                break;
+            }
+        } 
 
+        int lp = bp+1; // smallest
+        int rp = bp;  //largest
 
-//Two pointer approach(optimized code - O(n))
-    public static boolean pairSum1(ArrayList<Integer> list, int target) {
-
-        int lp = 0;
-        int rp = list.size() - 1;
-
-        while(lp < rp) {
+        while (lp != rp) {
 
             int sum = list.get(lp) + list.get(rp);
-        //case-1
+
+            //case 1
             if(sum == target) {
                 System.out.println("Pair Found: " + list.get(lp) + "," + list.get(rp));
                 return true;
             }
-        //case-2
-            if(sum < target) {
-                lp++;
+
+            //case 2
+            if(sum < target){
+                lp = (lp+1)%n;
             } else {
-                rp--;
+                //case 3
+                rp = (n+rp-1)%n;
             }
         }
-
         return false;
     }
-
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         ArrayList<Integer> list = new ArrayList<>();
@@ -58,10 +53,8 @@ public class PairSum {
         System.out.print("Enter target: ");
         int target = sc.nextInt();
 
-        System.out.println(pairSum1(list, target));
+        System.out.println(pairSum2(list, target));
 
         sc.close();
-
-
     }
 }
