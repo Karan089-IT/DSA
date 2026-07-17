@@ -84,6 +84,14 @@ public class LinkedList {
         newNode.next = temp.next;
         temp.next = newNode;
     }
+
+
+    //Remove()
+    public int removeFirst(){
+        int val = head.data;
+        head = head.next;
+        return val;
+    }
     
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
@@ -97,6 +105,10 @@ public class LinkedList {
         ll.addMid(2, 9);
         ll.print();  //1->2->9->3->4->null
         System.out.println(ll.size);
+
+        ll.removeFirst();
+        ll.print();
+
 
     }
     

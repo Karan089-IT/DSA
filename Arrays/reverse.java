@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class reverse {
 
     public static void reverseNo(int numbers[]){
