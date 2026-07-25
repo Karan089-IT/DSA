@@ -1,4 +1,6 @@
-public class ReverseLL {
+//Find & Remove Nth node from End
+//Nth node from end = (size-n+1) from start
+public class FindRemoveNthNode {
     public static class Node {
         int data;
         Node next;         //  reference variable(pointer)
@@ -25,18 +27,31 @@ public class ReverseLL {
     }
 
 
-    public void reverse(){   // O(n)
-        Node prev = null;
-        Node curr = tail = head;
-        Node next;
-
-        while (curr != null) {
-            next = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = next;
+    public void deleteNthfromEnd(int n){
+        //calculate size
+        int size = 0;
+        Node temp = head;
+        while (temp != null) {
+            temp = temp.next;
+            size++;
         }
-        head = prev;
+
+        if(n == size){
+            head =head.next;  //remove first
+            return;
+        }
+
+        //size-n
+        int i = 1;
+        int iToFind = size-n;
+        Node prev = head;
+        while (i < iToFind) {
+            prev = prev.next;
+            i++;
+        }
+
+        prev.next = prev.next.next;
+        return;
     }
 
     public void print() {      // O(n)
@@ -56,7 +71,7 @@ public class ReverseLL {
     }
 
     public static void main(String[] args) {
-        ReverseLL ll = new ReverseLL();
+        FindRemoveNthNode ll = new FindRemoveNthNode();
 
         ll.addFirst(5);
         ll.addFirst(4);
@@ -65,7 +80,8 @@ public class ReverseLL {
         ll.addFirst(1);
 
         ll.print();
-        ll.reverse();
+        ll.deleteNthfromEnd(3);
         ll.print();
+       
     }
 }
