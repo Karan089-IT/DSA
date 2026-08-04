@@ -1,4 +1,4 @@
-public class Palindrome {
+public class ZigZag {
     public static class Node {
         int data;
         Node next;         //  reference variable(pointer)
@@ -25,7 +25,8 @@ public class Palindrome {
     }
 
     //Slow-Fast Approach
-    public Node findMid(Node head){
+    public void zigZag(){
+        //find mid
         Node slow = head;
         Node fast = head;
 
@@ -33,20 +34,12 @@ public class Palindrome {
             slow = slow.next; //+1
             fast = fast.next.next; // +2
         }
-        return slow; // slow is my midNode
-    }
+        Node mid = slow; // slow is my midNode
 
-
-        public boolean checkPalindrome(){
-            if(head == null || head.next == null){
-                return true;
-            }
-            //step1 - find mid
-            Node midNode =findMid(head);
-
-            //step2 - reverse 2nd half
+        //step2 - reverse 2nd half
             Node prev = null;
-            Node curr = midNode;
+            Node curr = mid.next;
+            mid.next = null;
             Node next;
 
             while (curr != null) {
@@ -57,18 +50,20 @@ public class Palindrome {
             }
             Node right = prev; // right halft head
             Node left = head;
+            Node nextL, nextR;
 
-            //step3 - check left & right half equal
-            while (right != null) {
-                if(left.data != right.data){
-                    return false;
-                }
-                left = left.next;
-                right = right.next;
+            //alt merge - zigzag merge
+            while (left != null && right != null) {
+                nextL = left.next;
+                left.next = right;
+                nextR = right.next;
+                right.next = nextL;
+
+                //update
+                left = nextL;
+                right = nextR;
             }
-            return true;
-        }
-    
+    }        
 
     public void print() {      // O(n)
         if(head == null){
@@ -85,22 +80,17 @@ public class Palindrome {
 
         System.out.println("null");
     }
-
     public static void main(String[] args) {
-        Palindrome ll = new Palindrome();
-
-        ll.addFirst(1);
-        ll.addFirst(2);
+        ZigZag ll = new ZigZag();
+        ll.addFirst(6);
+        ll.addFirst(5);
+        ll.addFirst(4);
         ll.addFirst(3);
         ll.addFirst(2);
         ll.addFirst(1);
 
         ll.print();
-        // Node midNode = ll.findMid(ll.head);
-        // System.out.println("Middle Node = " + midNode.data);
-
-        System.out.println(ll.checkPalindrome());
-        
-       
+        ll.zigZag();
+        ll.print();
     }
 }
