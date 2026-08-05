@@ -25,12 +25,12 @@ public class ReverseLL {
     }
 
 
-    public void reverse(){   // O(n)
+    public void reverse(){   // O(n)  // 3 variable
         Node prev = null;
         Node curr = tail = head;
         Node next;
 
-        while (curr != null) {
+        while (curr != null) {  // 4 steps
             next = curr.next;
             curr.next = prev;
             prev = curr;
