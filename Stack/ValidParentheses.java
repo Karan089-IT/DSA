@@ -32,7 +32,7 @@ public class ValidParentheses {
         return s.isEmpty();
     }
     public static void main(String[] args) {
-        String str = "({})[]";
+        String str = "({})[)";
         System.out.println(validParentheses(str));
     }
 }
