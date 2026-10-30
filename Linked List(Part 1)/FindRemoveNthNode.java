@@ -1,5 +1,5 @@
-//Find & Remove Nth node from End
-//Nth node from end = (size-n+1) from start
+// //Find & Remove Nth node from End
+// //Nth node from end = (size-n+1) from start
 public class FindRemoveNthNode {
     public static class Node {
         int data;
@@ -85,3 +85,41 @@ public class FindRemoveNthNode {
        
     }
 }
+
+
+// class ListNode {
+//     int val;
+//     ListNode next;
+
+//     ListNode(int val) {
+//         this.val = val;
+//         this.next = null;
+//     }
+// }
+
+// class FindRemoveNthNode {
+//     public ListNode removeNthFromEnd(ListNode head, int n) {
+
+//         ListNode dummy = new ListNode(0);
+//         dummy.next = head;
+
+//         ListNode slow = dummy;
+//         ListNode fast = dummy;
+
+//         // Move fast n steps ahead
+//         for (int i = 0; i < n; i++) {
+//             fast = fast.next;
+//         }
+
+//         // Move both pointers
+//         while (fast.next != null) {
+//             slow = slow.next;
+//             fast = fast.next;
+//         }
+
+//         // Delete nth node from end
+//         slow.next = slow.next.next;
+
+//         return dummy.next;
+//     }
+// }
