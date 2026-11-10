@@ -25,22 +25,22 @@ public class ActivitySelection {
 
         //1st activity 
         maxAct = 1;
-        ans.add(0);
-        int lastEnd = end[0];
+        ans.add(activities[0][0]);  //ans.add(0);
+        int lastEnd = activities[0][2]; //int lastEnd = end[0];
 
         for (int i = 1; i < end.length; i++) {
-            if (start[i] >= lastEnd) {
+            if (activities[i][1] >= lastEnd) {
                 // activity select
                 maxAct++;
-                ans.add(i);
-                lastEnd = end[i];
+                ans.add(activities[i][0]);
+                lastEnd = activities[i][2];
 
             }
         }
 
         System.out.println("max activitied = "+maxAct);
         for(int i=0; i<ans.size(); i++){
-            System.out.println("A"+ans.get(i)+" ");
+            System.out.print("A"+ans.get(i)+" ");
         }
         System.out.println();
     }
